@@ -1,0 +1,16 @@
+C:\Users\User\Desktop\oyun\proje1\bin\Debug\net5.0\proje1.exe
+C:\Users\User\Desktop\oyun\proje1\bin\Debug\net5.0\proje1.deps.json
+C:\Users\User\Desktop\oyun\proje1\bin\Debug\net5.0\proje1.runtimeconfig.json
+C:\Users\User\Desktop\oyun\proje1\bin\Debug\net5.0\proje1.runtimeconfig.dev.json
+C:\Users\User\Desktop\oyun\proje1\bin\Debug\net5.0\proje1.dll
+C:\Users\User\Desktop\oyun\proje1\bin\Debug\net5.0\ref\proje1.dll
+C:\Users\User\Desktop\oyun\proje1\bin\Debug\net5.0\proje1.pdb
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\proje1.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\proje1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\proje1.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\proje1.AssemblyInfo.cs
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\proje1.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\proje1.dll
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\ref\proje1.dll
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\proje1.pdb
+C:\Users\User\Desktop\oyun\proje1\obj\Debug\net5.0\proje1.genruntimeconfig.cache
