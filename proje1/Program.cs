@@ -77,7 +77,7 @@ namespace proje1
             */
 
             List<Dusman> dusmanlar = new List<Dusman>();
-            Random rnd1 = new Random();
+            Random rnd1 = new Random();//dusmanSayisi olusturmak için nesne.
             Random rnd2 = new Random();
             Random rnd3 = new Random();
             int dusmanSayisi = rnd1.Next(2, 4);
@@ -90,7 +90,7 @@ namespace proje1
             }
 
             int kalanDusman = 0;
-            oyuncu.secilenHarita.dusmans = dusmanlar;
+            oyuncu.secilenHarita.dusmans = dusmanlar; // oyuncunun seçtiği haritaya random olarak seçilen dusmanları atıyoruz.
             oyuncu.anlikDusman = oyuncu.secilenHarita.dusmans[kalanDusman];
 
             //ANLIK DÜŞMAN SİLAH MI KULLANIYOR?
@@ -111,14 +111,14 @@ namespace proje1
                 Console.WriteLine((i + 1) + ". Düşman -> Silah Bilgisi: " + oyuncu.secilenHarita.dusmans[i].cephane._marka + " marka, " + oyuncu.secilenHarita.dusmans[i].cephane._model + " model, " + oyuncu.secilenHarita.dusmans[i].cephane._adi + ". Can Sayisi: " + oyuncu.secilenHarita.dusmans[i]._canSayisi);
             }
 
-            //CEPHANEYİ SIRALIYORUZ.
+            //TÜM CEPHANEYİ SIRALIYORUZ.
             Console.WriteLine("\nAşağıdaki silahlardan 3 tane seçiniz.\n");
             for (int i = 0; i < cephanes.Count; i++)
             {
-                Console.WriteLine((i + 1) + "." + cephanes[i]._marka + " marka" + " " + cephanes[i]._model + " model" + " " + cephanes[i]._adi + ". ");
+                Console.WriteLine((i + 1) + "." + cephanes[i]._marka + " marka" + " " + cephanes[i]._model + " model" + " " + cephanes[i]._adi + ". (Karşı tarafın can değerini **"+ cephanes[i]._canDegeri + "** kadar azaltır.)");
             }
 
-            //CEPHANEYİ KULLANICIDAN ALIYORUZ.
+            //3 ADET CEPHANEYİ KULLANICIDAN ALIYORUZ.
             for (int i = 0; i < 3; i++)
             {
                 oyuncu.cephanes.Add(cephanes[Convert.ToInt32(Console.ReadLine()) - 1]);
@@ -133,7 +133,7 @@ namespace proje1
 
             Console.Write("\n ***Düello birazdan başlıyor***\n");
 
-            //BAŞLANGIÇ SİLAHI SEÇER.
+            //OYUNCU BAŞLANGIÇ SİLAHINI SEÇMESİ İÇİN ELİNDEKİLERİ SIRALADIK.
             Console.WriteLine("\n Başlamak için silahlarınızdan birini seçiniz.\n Silahlarınız: \n");
             for (int i = 0; i < oyuncu.cephanes.Count; i++)
             {
@@ -160,7 +160,7 @@ namespace proje1
             {
                 
                 if (oyuncu.siraDurumu == true) {
-                    Console.Write("\nPress 'a' to atack or choose weapon to 'c'\n");
+                    Console.Write("\nAtağa geçmek için 'a', silahınızı değiştirmek için 'd' tuşuna basınız.\n");
                     string choice = Console.ReadLine();
 
                     if (choice == "a")
@@ -170,7 +170,7 @@ namespace proje1
 
                     }
 
-                    else if (choice == "c")
+                    else if (choice == "d")
                     {
                         //SEÇTİKLERİNİ TEKRAR SIRALIYORUZ.
                         for (int i = 0; i < oyuncu.cephanes.Count; i++)

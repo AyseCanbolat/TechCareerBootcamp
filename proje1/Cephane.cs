@@ -76,21 +76,20 @@ namespace proje1
                             break;
                         }
 
-                    } else
+                    }
+
+                    else
                     {
                         _oyuncu.anlikDusman.cephane._mermiSayisi -= _oyuncu.anlikDusman.cephane._mermiKullanimSayisi;
                         _oyuncu._toplamCan -= _oyuncu.anlikDusman.cephane._canDegeri;
 
 
-                        if (_oyuncu._toplamCan <= 0)
-                        {
-                            Console.WriteLine(_oyuncu.anlikDusman.cephane._marka + " markaya sahip düşman seni öldürdü ve oyunu kaybettin.");
-                            break;
-                        }
 
                         if (_oyuncu._toplamCan <= 0)
                         {
                             Console.WriteLine("Düşman " + _oyuncu.anlikDusman.cephane._marka + " markaya sahip silah ile oyuncuya saldırdı, oyuncu can bilgisi: " + 0);
+                            Console.WriteLine(_oyuncu.anlikDusman.cephane._marka + " markaya sahip düşman seni öldürdü ve oyunu kaybettin.");
+                            break;
                         }
                         else if (_oyuncu._toplamCan > 0)
                         {
@@ -135,7 +134,7 @@ namespace proje1
                             }
                         }
 
-                        Console.WriteLine("Oyuncu " + _oyuncu.secilenCephane._marka + " markaya sahip bıçak ile saldırısını gerçekleştirdi, düşmanın kalan can sayısı: " + _oyuncu.anlikDusman._canSayisi);
+                        Console.WriteLine("Oyuncu " + _oyuncu.secilenCephane._marka + " markaya sahip bıçak ile saldırısını gerçekleştirdi.. Düşmanın kalan can sayısı: " + _oyuncu.anlikDusman._canSayisi);
                         _oyuncu.siraDurumu = false;
                         _oyuncu.anlikDusman.siraDurumu = true;
                         _oyuncu.anlikDusman.cephane._bileylemek = false;
@@ -160,7 +159,7 @@ namespace proje1
                             if (_oyuncu.secilenHarita.dusmans.Count != 0)
                             {
 
-                                _oyuncu.anlikDusman = _oyuncu.secilenHarita.dusmans[0];
+                                _oyuncu.anlikDusman = _oyuncu.secilenHarita.dusmans[0]; //remove ettiğimiz düşmanın (anlık düşmanın) yerine tekrar bir sonraki indextekini atadık.
 
                                 //ANLIK DÜŞMAN SİLAH MI KULLANIYOR?
                                 if ((_oyuncu.anlikDusman.cephane._marka == "Rambo") || (_oyuncu.anlikDusman.cephane._marka == "KST"))
