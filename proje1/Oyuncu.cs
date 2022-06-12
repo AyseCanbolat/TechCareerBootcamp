@@ -9,7 +9,7 @@ namespace proje1
     class Oyuncu
     {
         public string _karakterAdi;
-        public int _toplamCan=30;
+        public int _toplamCan=100;
         public List<Cephane> cephanes = new List<Cephane>();
         public Map secilenHarita;
         public Cephane secilenCephane;

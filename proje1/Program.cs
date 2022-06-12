@@ -80,11 +80,11 @@ namespace proje1
             Random rnd1 = new Random();//dusmanSayisi olusturmak için nesne.
             Random rnd2 = new Random();
             Random rnd3 = new Random();
-            int dusmanSayisi = rnd1.Next(2, 4);
+            int dusmanSayisi = rnd1.Next(3, 8);
 
             for (int i = 0; i < dusmanSayisi; i++)
             {
-                Dusman yeniDusman = new Dusman(rnd3.Next(10,30));// canSayısı na random can gönderdik.
+                Dusman yeniDusman = new Dusman(rnd3.Next(30,70));// canSayısı na random can gönderdik.
                 yeniDusman.cephane = cephanes[rnd2.Next(0, cephanes.Count)];
                 dusmanlar.Add(yeniDusman);
             }
