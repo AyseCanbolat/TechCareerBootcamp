@@ -89,9 +89,9 @@ namespace proje1
                 dusmanlar.Add(yeniDusman);
             }
 
-            int kalanDusman = 0;
+            
             oyuncu.secilenHarita.dusmans = dusmanlar; // oyuncunun seçtiği haritaya random olarak seçilen dusmanları atıyoruz.
-            oyuncu.anlikDusman = oyuncu.secilenHarita.dusmans[kalanDusman];
+            oyuncu.anlikDusman = oyuncu.secilenHarita.dusmans[0];
 
             //ANLIK DÜŞMAN SİLAH MI KULLANIYOR?
             if ((oyuncu.anlikDusman.cephane._marka == "Rambo") || (oyuncu.anlikDusman.cephane._marka == "KST"))
