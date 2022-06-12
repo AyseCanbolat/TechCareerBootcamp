@@ -13,12 +13,11 @@ namespace proje1
             Console.WriteLine("Düelloya hoşgeldiniz.");
             Console.WriteLine("**********************");
             Console.WriteLine("Karakterinize isim veriniz.");
-            Oyuncu oyuncu = new Oyuncu(Console.ReadLine());
-
+            Oyuncu oyuncu = new Oyuncu(Console.ReadLine()); // OYUNCUDAN INSTANCE ALDIK.
             Console.WriteLine("Karakteriniz " + oyuncu._karakterAdi + " ismi ile oluşturuldu.");
-            Console.WriteLine("***Default olarak karakterinizin toplam can puanı 100 olarak atanmıştır.***");
+            
 
-            //MAP KISMI
+            //MAP KISMI.
             List<Map> maps = new List<Map>();
             Map map1 = new Map("Vahşi Batı");
             maps.Add(map1);
@@ -37,16 +36,18 @@ namespace proje1
             Map map8 = new Map("Galaksi");
             maps.Add(map8);
 
+            //MAPLERİ SIRALADIK.
             Console.WriteLine("\nAşağıdaki haritalardan birini seçiniz.\n");
             for (int i = 0; i < maps.Count; i++)
             {
                 Console.WriteLine((i + 1) + "." + maps[i]._mapName);
             }
 
+            //SEÇTİĞİ HARİTA ATANIYOR.
             oyuncu.secilenHarita = maps[Convert.ToInt32(Console.ReadLine()) - 1];
-
             Console.WriteLine("\n" + oyuncu.secilenHarita._mapName + " haritasını seçtiniz. \n");
 
+            //CEPHANE KISMI.
             List<Cephane> cephanes = new List<Cephane>();
             Cephane rambo = new Cephane("Rambo", "K500", "bıçak", 5, oyuncu);
             cephanes.Add(rambo);
@@ -67,23 +68,23 @@ namespace proje1
             Cephane guny = new Cephane("Guny", "G200", "top", 30, 1, 1, oyuncu);
             cephanes.Add(guny);
 
-            List<Dusman> dusmanlar = new List<Dusman>();
 
-            //DÜŞMAN KISMI 
-            /* 
-              random bir sayı ürettik o sayıya kadar for loop ile o sayı kadar düşman oluşturduk.
-                for içinde unique düşman objesi oluşturduk ve ve düşmanopbjesi içerisinde yer alan cephane listesini oyuncumuzun silahları ile eşledik.
-                oyuncunun seçmiş olduğu harita objesine düşmanlarımızı atadık..
+
+            /* DÜŞMAN KISMI 
+              Random bir sayı ürettik o sayıya kadar for loop ile o sayı kadar düşman oluşturduk.
+              For içinde unique düşman objesi oluşturduk ve düşman objesi içerisinde yer alan cephane listesini oyuncumuzun silahları ile eşledik.
+              Oyuncunun seçmiş olduğu harita objesine düşmanlarımızı atadık.
             */
 
+            List<Dusman> dusmanlar = new List<Dusman>();
             Random rnd1 = new Random();
             Random rnd2 = new Random();
             Random rnd3 = new Random();
-            int dusmanSayisi = rnd1.Next(3, 8);
+            int dusmanSayisi = rnd1.Next(2, 4);
 
             for (int i = 0; i < dusmanSayisi; i++)
             {
-                Dusman yeniDusman = new Dusman(rnd3.Next(30,70));
+                Dusman yeniDusman = new Dusman(rnd3.Next(10,30));// canSayısı na random can gönderdik.
                 yeniDusman.cephane = cephanes[rnd2.Next(0, cephanes.Count)];
                 dusmanlar.Add(yeniDusman);
             }
@@ -92,10 +93,22 @@ namespace proje1
             oyuncu.secilenHarita.dusmans = dusmanlar;
             oyuncu.anlikDusman = oyuncu.secilenHarita.dusmans[kalanDusman];
 
-            Console.WriteLine("\nAşağıdaki düşmanlar ile savaşacaksınız\n");
+            //ANLIK DÜŞMAN SİLAH MI KULLANIYOR?
+            if ((oyuncu.anlikDusman.cephane._marka == "Rambo") || (oyuncu.anlikDusman.cephane._marka == "KST"))
+            {
+                oyuncu.anlikDusman.isCephaneBicak = true;
+            }
+            else
+            {
+                oyuncu.anlikDusman.isCephaneBicak = false;
+            }
+
+
+            //Seçilen haritaya atanan düşmanları sıraladık. 
+            Console.WriteLine("\nAşağıdaki özelliklerdeki düşmanlar ile savaşacaksınız!\n");
             for (int i = 0; i < oyuncu.secilenHarita.dusmans.Count; i++)
             {
-                Console.WriteLine((i + 1) + ". Düşman -> Silah Bilgisi: " + oyuncu.secilenHarita.dusmans[i].cephane._marka + " " + oyuncu.secilenHarita.dusmans[i].cephane._adi + " Can Sayisi: " + oyuncu.secilenHarita.dusmans[i]._canSayisi);
+                Console.WriteLine((i + 1) + ". Düşman -> Silah Bilgisi: " + oyuncu.secilenHarita.dusmans[i].cephane._marka + " marka, " + oyuncu.secilenHarita.dusmans[i].cephane._model + " model, " + oyuncu.secilenHarita.dusmans[i].cephane._adi + ". Can Sayisi: " + oyuncu.secilenHarita.dusmans[i]._canSayisi);
             }
 
             //CEPHANEYİ SIRALIYORUZ.
@@ -105,46 +118,91 @@ namespace proje1
                 Console.WriteLine((i + 1) + "." + cephanes[i]._marka + " marka" + " " + cephanes[i]._model + " model" + " " + cephanes[i]._adi + ". ");
             }
 
+            //CEPHANEYİ KULLANICIDAN ALIYORUZ.
             for (int i = 0; i < 3; i++)
             {
                 oyuncu.cephanes.Add(cephanes[Convert.ToInt32(Console.ReadLine()) - 1]);
             }
 
+            //SEÇTİKLERİNİ TEKRAR SIRALIYORUZ.
+            for (int i = 0; i < oyuncu.cephanes.Count; i++)
+            {
+                
+                Console.WriteLine("\n" + (i + 1) + "." + oyuncu.cephanes[i]._marka + " marka" + " " + oyuncu.cephanes[i]._model + " model" + " " + oyuncu.cephanes[i]._adi + ". ");
+            }
+
+            Console.Write("\n ***Düello birazdan başlıyor***\n");
+
+            //BAŞLANGIÇ SİLAHI SEÇER.
+            Console.WriteLine("\n Başlamak için silahlarınızdan birini seçiniz.\n Silahlarınız: \n");
             for (int i = 0; i < oyuncu.cephanes.Count; i++)
             {
                 Console.WriteLine("\n" + (i + 1) + "." + oyuncu.cephanes[i]._marka + " marka" + " " + oyuncu.cephanes[i]._model + " model" + " " + oyuncu.cephanes[i]._adi + ". ");
             }
 
-            Console.Write("\n ***Düello başlıyor***\n");
-            Console.WriteLine("\n Lütfen silahlarınızdan birini seçiniz.\n Silahlarınız: \n");
-
-            for (int i = 0; i < oyuncu.cephanes.Count; i++)
-            {
-                Console.WriteLine("\n" + (i + 1) + "." + oyuncu.cephanes[i]._marka + " marka" + " " + oyuncu.cephanes[i]._model + " model" + " " + oyuncu.cephanes[i]._adi + ". ");
-            }
-
+            //BAŞLANGIÇ SİLAHINI SECİLEN CEPHANEYE ATADIK.
             oyuncu.secilenCephane = oyuncu.cephanes[Convert.ToInt32(Console.ReadLine()) - 1];
 
-            Console.WriteLine("\nDüelloya " + oyuncu.secilenCephane._marka + " marka" + " " + oyuncu.secilenCephane._model + " model" + " " + oyuncu.secilenCephane._adi + " ile başlıyorsunuz. \n");
-
-            while (oyuncu.secilenHarita.dusmans.Count != 0 && oyuncu.siraDurumu == true)
+            //OYUNCU BIÇAK MI SEÇTİ ?
+            if ((oyuncu.secilenCephane._marka == "Rambo") || (oyuncu.secilenCephane._marka == "KST"))
             {
-                Console.WriteLine("\nSaldırı için Space tuşuna basınız...\n");
-                ConsoleKeyInfo name = Console.ReadKey();
-                if ((name.KeyChar == ' ')) {
-                    oyuncu.secilenCephane.useCephane(SilahKullanicisi.oyuncu);
-                    if ((oyuncu.anlikDusman._canSayisi == 0))
+                oyuncu.isCephaneBicak = true;
+            } else
+            {
+                oyuncu.isCephaneBicak = false;
+            }
+
+
+            Console.WriteLine("\nDüelloya " + oyuncu.secilenCephane._marka + " marka" + " " + oyuncu.secilenCephane._model + " model" + " " + oyuncu.secilenCephane._adi + " ile başlıyorsunuz. \n");
+            Console.WriteLine("***Default olarak karakterinizin toplam can puanı 100 olarak atanmıştır.***");
+
+            while (oyuncu._toplamCan > 0 && oyuncu.anlikDusman._canSayisi > 0)
+            {
+                
+                if (oyuncu.siraDurumu == true) {
+                    Console.Write("\nPress 'a' to atack or choose weapon to 'c'\n");
+                    string choice = Console.ReadLine();
+
+                    if (choice == "a")
                     {
-                        kalanDusman += 1;
-                        oyuncu.anlikDusman = oyuncu.secilenHarita.dusmans[kalanDusman];
+
+                        oyuncu.secilenCephane.useCephane(SilahKullanicisi.oyuncu);
+
                     }
-                } else {
-                    oyuncu.anlikDusman.cephane.useCephane(SilahKullanicisi.dusman);
+
+                    else if (choice == "c")
+                    {
+                        //SEÇTİKLERİNİ TEKRAR SIRALIYORUZ.
+                        for (int i = 0; i < oyuncu.cephanes.Count; i++)
+                        {
+                            Console.WriteLine("\n" + (i + 1) + "." + oyuncu.cephanes[i]._marka + " marka" + " " + oyuncu.cephanes[i]._model + " model" + " " + oyuncu.cephanes[i]._adi + ". ");
+                        }
+
+                        oyuncu.secilenCephane = oyuncu.cephanes[Convert.ToInt32(Console.ReadLine()) - 1];
+
+                        if ((oyuncu.secilenCephane._marka == "Rambo") || (oyuncu.secilenCephane._marka == "KST"))
+                        {
+                            oyuncu.isCephaneBicak = true;
+                        }
+                        else
+                        {
+                            oyuncu.isCephaneBicak = false;
+                        }
+                    }
+                }
+
+                else
+                {
+  
+                    if ((oyuncu.anlikDusman._canSayisi > 0) && ((oyuncu.anlikDusman.cephane._mermiSayisi > 0) || (oyuncu.anlikDusman.isCephaneBicak == true)))
+                    {
+                        oyuncu.anlikDusman.cephane.useCephane(SilahKullanicisi.dusman);
+                    }
+
                 }
             }
 
             Console.ReadLine();
-
     }
     
     }

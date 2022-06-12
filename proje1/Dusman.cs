@@ -11,12 +11,14 @@ namespace proje1
         public int _canSayisi;
         public bool siraDurumu = true;
         public Cephane cephane;
+        public bool isCephaneBicak = false;
 
         public Dusman(int canSayisi)
         {
             _canSayisi = canSayisi;
         }
-        
+
+       
     }
     
 }
