@@ -1,4 +1,5 @@
 # TechCareerBootcamp
+
 TechCareer War Game
 Bu doküman geliştirilecek TechCareer War isimli oyunun analizini içermektedir. Bu oyun, kullanıcıların
 yönettikleri oyun karakteriyle bilgisayar tarafından yönetilen oyun karakterlerine karşı savaştığı bir
@@ -14,6 +15,8 @@ Bir düelloda oyuncu ve düşman karakter sırayla silah kullanır. Düellolarda
 Ardından düşman karakter saldırıda bulunur. Düşman karakter ölürse oyuncu düelloyu kazanmış olur.
 Eğer harita üzerinde düello yapacak başka düşman kalmamışsa oyuncu oyunu başarıyla tamamlamış
 olur.
+
+
 Oyun Öncesi
 Oyuncu bir oyuna başlarken önce karakteri oluşturulur. Karakterin oyuncu tarafından girilen bir adı ve
 canı vardır. Karakterin can değeri başlangıçta 100’dür. Düellolar esnasında aldığı yaraların türüne göre bu
@@ -26,6 +29,8 @@ başladığında kaç düşmanla savaşacağını görür.
 Oyuncu seçtiği haritada ilerlemeye başlamadan önce cephanelikten kullanacağı 3 adet silah seçimi
 yapmalıdır. Tüm oyun boyunca sadece bu silahları kullanabilir. Bir düelloda saldırı sırası oyuncudayken
 kullanabileceği bir silah yoksa karakteri ölür ve oyun sonlanır.
+
+
 Cephanelik
 Oyuncunun seçim yapabileceği farklı tip silahların olduğu bir cephanelik mevcuttur. Düşman karakterler
 de yine bu silahları kullanırlar.
@@ -49,12 +54,16 @@ imkanı tanır.
 tarafın can değerini 40 azaltır. Hedefi net görmek için yakınlaştırma imkanı tanır.
 • Guny marka G200 model top. 1 adet top mermisi alır. Her kullanımda tek top atar. Karşı tarafın
 can değerini 30 azaltır.
+
+
 Oyuna Başlama
 Oyun başladığında öncelikle, oyuncunun seçtiği harita üzerinde yer alan düşman karakterleri oluşur. Her
 karakterin kullandığı tek bir silah vardır. Bu silah rastgele belirlenir. Her karakterin can değeri de rastgele
 belirlenir. Bu değer en az 30 en çok 70’dir.
 Oyuncu ilk düellosunu harita üzerinde yer alan düşmanlardan herhangi biriyle yapar. Eğer bu düelloyu
 kazanırsa sıradaki düşman karakteri de kalanlardan herhangi biridir.
+
+
 Düello
 Oyuncu bir düelloya başlarken öncelikle elindeki silahlardan birini seçer. Seçtiği silah ile ilk saldırısını
 yapar. Silahın tipine göre düşman karakterinin can değeri azalır. Eğer düşmanın can değeri 0 olursa
